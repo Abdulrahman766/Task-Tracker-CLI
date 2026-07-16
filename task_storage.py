@@ -41,6 +41,11 @@ def add(task):
 
     return id
 
+def update(id,updated_task):
+    json_data[id] = updated_task
+    write_tasks(json_data)
+
+
 
 def delete(id):
     del json_data[id] 
