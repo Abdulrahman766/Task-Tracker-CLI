@@ -14,6 +14,9 @@ def delete_task(id):
 
 def update_task(id,updated_task):
     task_storage.update(id,updated_task)
+
+def mark_in_progress(task,id):
+    task_storage.in_progress(task,id)
     
     
     
@@ -35,5 +38,9 @@ if __name__ == "__main__":
         delete_task(args[2])
     elif "update" in args:
         update_task(args[2],args[3])
+    elif "mark-in-progress" in args:
+        print(args)
+        mark_in_progress(args[1],args[2])
+   
         
         

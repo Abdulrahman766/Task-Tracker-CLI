@@ -51,6 +51,11 @@ def delete(id):
     del json_data[id] 
     write_tasks(json_data)
 
+
+def in_progress(task,id):
+    json_data[id] = [task,"in progress"]
+    write_tasks(json_data)
+
     
     
 
