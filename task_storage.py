@@ -36,13 +36,13 @@ def save_changes():
 def add(task):
 
     id = len(json_data)+1
-    json_data[id] = task
+    json_data[id] = [task]
     write_tasks(json_data)
 
     return id
 
 def update(id,updated_task):
-    json_data[id] = updated_task
+    json_data[id] = [updated_task]
     write_tasks(json_data)
 
 
@@ -52,9 +52,18 @@ def delete(id):
     write_tasks(json_data)
 
 
-def in_progress(task,id):
-    json_data[id] = [task,"in progress"]
+def in_progress(id):
+    json_data[id].append("in progress")
     write_tasks(json_data)
+
+
+def is_done(id):
+    json_data[id].remove("in progress")
+    json_data[id].append("done")
+    write_tasks(json_data)
+
+
+
 
     
     
