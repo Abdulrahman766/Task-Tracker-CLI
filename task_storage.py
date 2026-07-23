@@ -1,6 +1,7 @@
 import json
 from tabulate import tabulate
-import pandas as pd
+from datetime import datetime
+
 
 file="data.json"
 json_data = {}
@@ -38,7 +39,8 @@ def save_changes():
 def add(task):
 
     id = len(json_data)+1
-    json_data[id] = [task]
+    date_time=datetime.now()
+    json_data[id] = [task,date_time.strftime("%d-%M-%Y %H:%M:%S %p")]
     write_tasks(json_data)
 
     return id
@@ -74,7 +76,8 @@ def list():
         "id":[],
         "todo":[],
         "in progress":[],
-        "done":[]
+        "done":[],
+        "date-time":[]
 
     }
 
@@ -84,15 +87,19 @@ def list():
             task_list["todo"].append("")
             task_list["done"].append("")
             task_list["in progress"].append(v[0])
+            task_list["date-time"].append(v[1])
+        
             
         elif "done" in v:
                     task_list["id"].append(k)
                     task_list["todo"].append("")
                     task_list["in progress"].append("")
                     task_list["done"].append(v[0])
+                    task_list["date-time"].append(v[1])
         else:
              task_list["id"].append(k)
              task_list["todo"].append(v[0])
+             task_list["date-time"].append(v[1])
              
     print(tabulate(task_list,headers="keys",tablefmt="grid"))
 
