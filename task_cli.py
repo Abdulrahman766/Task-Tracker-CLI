@@ -43,7 +43,7 @@ if __name__ == "__main__":
     elif "delete" in args:
         delete_task(args[2])
     elif "update" in args:
-        update_task(args[2],args[3])
+       update_task(args[2],args[3])
     elif "mark-in-progress" in args:
         mark_in_progress(args[2])
     elif "mark-done" in args:

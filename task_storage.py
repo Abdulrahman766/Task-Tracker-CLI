@@ -10,7 +10,7 @@ json_data = {}
 try: 
     with open(file , "r",encoding="utf-8") as f:
         json_data = json.load(f)
-        
+
 except Exception as e:
         print(e)
              
@@ -46,7 +46,8 @@ def add(task):
     return id
 
 def update(id,updated_task):
-    json_data[id] = [updated_task]
+    date_time=datetime.now()
+    json_data[id] = [updated_task,date_time.strftime("%d-%M-%Y %H:%M:%S %p")]
     write_tasks(json_data)
 
 
