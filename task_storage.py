@@ -1,4 +1,6 @@
 import json
+from tabulate import tabulate
+import pandas as pd
 
 file="data.json"
 json_data = {}
@@ -58,9 +60,45 @@ def in_progress(id):
 
 
 def is_done(id):
-    json_data[id].remove("in progress")
-    json_data[id].append("done")
+    if "in progress" in json_data[id]:
+        json_data[id].remove("in progress")
+        json_data[id].append("done")
+    else:
+         print("Error: the task has to be marked as \"in progress\" before you marke it as \"done\". ")
     write_tasks(json_data)
+
+def list():
+   
+
+    task_list={
+        "id":[],
+        "todo":[],
+        "in progress":[],
+        "done":[]
+
+    }
+
+    for k,v in json_data.items():
+        if "in progress" in v:
+            task_list["id"].append(k)
+            task_list["todo"].append("")
+            task_list["done"].append("")
+            task_list["in progress"].append(v[0])
+            
+        elif "done" in v:
+                    task_list["id"].append(k)
+                    task_list["todo"].append("")
+                    task_list["in progress"].append("")
+                    task_list["done"].append(v[0])
+        else:
+             task_list["id"].append(k)
+             task_list["todo"].append(v[0])
+             
+    print(tabulate(task_list,headers="keys",tablefmt="grid"))
+
+
+   
+    
 
 
 

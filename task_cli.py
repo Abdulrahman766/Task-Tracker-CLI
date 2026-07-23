@@ -20,6 +20,9 @@ def mark_in_progress(id):
 
 def task_is_done(id):
     task_storage.is_done(id)
+
+def list_tasks():
+    task_storage.list()
     
     
     
@@ -44,8 +47,9 @@ if __name__ == "__main__":
     elif "mark-in-progress" in args:
         mark_in_progress(args[2])
     elif "mark-done" in args:
-        print(args)
         task_is_done(args[2])
+    elif "list" in args:
+        list_tasks()
    
         
         
