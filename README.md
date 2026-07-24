@@ -58,3 +58,8 @@ python task_cli.py delete <id>
   python task_cli.py mark-done <id>
 ```
 
+
+# About this project:
+I have done this project to practice my Python skills.\
+Special thanks to roadmap.sh for providing a guide for this project [python Projects](https://roadmap.sh/projects/task-tracker)
+
